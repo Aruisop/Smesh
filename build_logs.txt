@@ -1,0 +1,26 @@
+﻿docker : 
+time="2026-03-15T09:50:45+05:30" 
+level=warning msg="C:\\Users\\shah
+a\\Downloads\\Smesh(Sentinel-Mesh)
+\\docker-compose.yml: the 
+attribute `version` is obsolete, 
+it will be ignored, please remove 
+it to avoid potential confusion"
+At line:1 char:1
++ docker compose build 2>&1 | 
+Out-File -Encoding utf8 
+build_logs.txt
++ ~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : Not 
+   Specified: (time="2026-03-1..  
+  .tial confusion":String) [],    
+ RemoteException
+    + FullyQualifiedErrorId : Nat 
+   iveCommandError
+ 
+error during connect: Head "http:/
+/%2F%2F.%2Fpipe%2FdockerDesktopLin
+uxEngine/_ping": open //./pipe/doc
+kerDesktopLinuxEngine: The system 
+cannot find the file specified.
+

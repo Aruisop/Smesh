@@ -32,15 +32,6 @@ server {
         proxy_set_header X-Forwarded-Proto $scheme;
     }
 
-    # Proxy auth routes (GitHub OAuth redirects)
-    location /auth/ {
-        proxy_pass http://api-gateway:3000/auth/;
-        proxy_http_version 1.1;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-    }
 
     # Proxy Socket.IO WebSocket connections
     location /socket.io/ {

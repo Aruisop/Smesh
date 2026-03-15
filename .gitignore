@@ -23,3 +23,6 @@ services/anomaly-detector/models/
 # OS
 .DS_Store
 Thumbs.db
+
+# Developer notes/guides
+guidelines/
