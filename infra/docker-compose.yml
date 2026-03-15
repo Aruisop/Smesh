@@ -1,0 +1,76 @@
+version: '3.8'
+
+services:
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - sentinel_net
+
+  log-generator:
+    build:
+      context: ../services/log-generator
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - LOG_INTERVAL=0.5
+    depends_on:
+      - redis
+    networks:
+      - sentinel_net
+
+  anomaly-detector:
+    build:
+      context: ../services/anomaly-detector
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    depends_on:
+      - redis
+    networks:
+      - sentinel_net
+
+  threat-engine:
+    build:
+      context: ../services/threat-engine
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    depends_on:
+      - redis
+    networks:
+      - sentinel_net
+
+  api-gateway:
+    build:
+      context: ../services/api-gateway
+    ports:
+      - "3000:3000"
+    env_file:
+      - ../services/api-gateway/.env
+    environment:
+      - REDIS_HOST=redis
+      - FRONTEND_URL=http://localhost:5173
+    depends_on:
+      - redis
+      - threat-engine
+    networks:
+      - sentinel_net
+
+  dashboard:
+    build:
+      context: ../frontend/dashboard
+    ports:
+      - "5173:80"
+    networks:
+      - sentinel_net
+
+networks:
+  sentinel_net:
+    driver: bridge
+
+volumes:
+  redis_data:

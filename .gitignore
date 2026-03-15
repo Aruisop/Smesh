@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+
+# Environment variables (contains secrets!)
+.env
+!.env.example
+
+# Build artifacts
+dist/
+build/
+*.log
+
+# ML model files (large binaries)
+services/anomaly-detector/data/
+services/anomaly-detector/models/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
