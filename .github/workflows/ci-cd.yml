@@ -98,36 +98,36 @@ jobs:
   # ─────────────────────────────────────────────────────────
   # CONTINUOUS DEPLOYMENT (CD)
   # ─────────────────────────────────────────────────────────
-  deploy:
-    name: Deploy to Production
-    needs: [build-and-test, build-frontend]
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
-    
-    steps:
-      - name: Deploy via SSH
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.PROD_SERVER_HOST }}
-          username: ${{ secrets.PROD_SERVER_USER }}
-          key: ${{ secrets.PROD_SERVER_SSH_KEY }}
-          script: |
-            echo "Starting Deployment onto Production Server..."
-            
-            # 1. Navigate to the project directory
-            cd /opt/sentinel-mesh
-            
-            # 2. Pull the latest code from Git
-            git pull origin main
-            
-            # 3. Pull the latest built images from GHCR
-            export GITHUB_REPOSITORY=${{ github.repository }}
-            docker compose -f docker-compose.prod.yml pull
-            
-            # 4. Rebuild and restart the containers with no downtime
-            docker compose -f docker-compose.prod.yml up -d --force-recreate
-            
-            # 5. Clean up dangling/old images to save disk space
-            docker image prune -f
-            
-            echo "Deployment Successful! System is live."
+  # deploy:
+  #   name: Deploy to Production
+  #   needs: [build-and-test, build-frontend]
+  #   runs-on: ubuntu-latest
+  #   if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+  #   
+  #   steps:
+  #     - name: Deploy via SSH
+  #       uses: appleboy/ssh-action@v1.0.3
+  #       with:
+  #         host: ${{ secrets.PROD_SERVER_HOST }}
+  #         username: ${{ secrets.PROD_SERVER_USER }}
+  #         key: ${{ secrets.PROD_SERVER_SSH_KEY }}
+  #         script: |
+  #           echo "Starting Deployment onto Production Server..."
+  #           
+  #           # 1. Navigate to the project directory
+  #           cd /opt/sentinel-mesh
+  #           
+  #           # 2. Pull the latest code from Git
+  #           git pull origin main
+  #           
+  #           # 3. Pull the latest built images from GHCR
+  #           export GITHUB_REPOSITORY=${{ github.repository }}
+  #           docker compose -f docker-compose.prod.yml pull
+  #           
+  #           # 4. Rebuild and restart the containers with no downtime
+  #           docker compose -f docker-compose.prod.yml up -d --force-recreate
+  #           
+  #           # 5. Clean up dangling/old images to save disk space
+  #           docker image prune -f
+  #           
+  #           echo "Deployment Successful! System is live."
