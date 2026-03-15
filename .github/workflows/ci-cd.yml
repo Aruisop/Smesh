@@ -121,10 +121,11 @@ jobs:
             git pull origin main
             
             # 3. Pull the latest built images from GHCR
-            docker compose pull
+            export GITHUB_REPOSITORY=${{ github.repository }}
+            docker compose -f docker-compose.prod.yml pull
             
             # 4. Rebuild and restart the containers with no downtime
-            docker compose up -d --build --force-recreate
+            docker compose -f docker-compose.prod.yml up -d --force-recreate
             
             # 5. Clean up dangling/old images to save disk space
             docker image prune -f
