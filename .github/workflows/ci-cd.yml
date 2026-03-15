@@ -8,7 +8,6 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
 
 jobs:
   # ─────────────────────────────────────────────────────────
@@ -52,11 +51,15 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Lowercase repository name
+        run: |
+          echo "REPO_LOWERCASE=${GITHUB_REPOSITORY,,}" >> $GITHUB_ENV
+
       - name: Extract metadata for Docker
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/${{ matrix.service }}
+          images: ${{ env.REGISTRY }}/${{ env.REPO_LOWERCASE }}/${{ matrix.service }}
 
       - name: Build & Push Docker image
         uses: docker/build-push-action@v5
@@ -86,12 +89,16 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Lowercase repository name
+        run: |
+          echo "REPO_LOWERCASE=${GITHUB_REPOSITORY,,}" >> $GITHUB_ENV
+
       - name: Build & Push Frontend Image
         uses: docker/build-push-action@v5
         with:
           context: ./frontend/dashboard
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/dashboard:latest
+          tags: ${{ env.REGISTRY }}/${{ env.REPO_LOWERCASE }}/dashboard:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
