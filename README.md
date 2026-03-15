@@ -1,4 +1,4 @@
-# 🛡️ SentinelMesh — AI-Powered Network & O-RAN Security Platform
+# SentinelMesh — AI-Powered Network & O-RAN Security Platform
 
 <div align="center">
 
@@ -17,7 +17,7 @@
 
 ---
 
-## 📸 Platform Interface
+## Platform Interface
 
 ### Interactive SOC Dashboard
 <img width="100%" alt="SOC Dashboard Main View" src="https://github.com/user-attachments/assets/86ef13f3-6654-4077-af2e-8cfe5d5b3b6e" />
@@ -35,7 +35,7 @@
 
 ---
 
-## 📡 Overview
+## Overview
 
 SentinelMesh is a polyglot microservices platform that performs **real-time network intrusion detection** and **O-RAN (Open RAN) security assurance**. It combines ML-based anomaly detection (Isolation Forest), a Go threat scoring engine, and a React SOC dashboard with real-time WebSocket updates.
 
@@ -54,7 +54,7 @@ SentinelMesh is a polyglot microservices platform that performs **real-time netw
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ```mermaid
 graph TD
@@ -185,15 +185,15 @@ flowchart TD
 
 ---
 
-## 🚀 Key Features
+## Key Features
 
-### 🔐 Network Security
+### Network Security
 - **ML Anomaly Detection** — Isolation Forest model trained on network traffic features
 - **Real-time Threat Feed** — Socket.IO push for instant alert visibility
 - **Threat Intelligence Map** — SVG geo-visualization of attack origins
 - **Protocol Analysis** — TCP/UDP/ICMP/DNS distribution + port targeting
 
-### 📡 O-RAN Security Assurance
+### O-RAN Security Assurance
 - **5 Telecom Attack Types** — Rogue gNB, handover hijack, signaling storm, slice access violation, IMSI catcher
 - **O1 PM Counters** — PRB utilization, RRC setup rate, handover success, RSRP/SINR/CQI, throughput, latency
 - **A1 Policy Audit** — Zero-trust validation against O-RAN TS 803, 3GPP TS 33.501, NIST SP 800-187
@@ -201,12 +201,12 @@ flowchart TD
 - **Network Slice Monitoring** — eMBB, URLLC, mMTC, Emergency slice status
 - **8 Simulated gNB Cells** — CU/DU architecture with n77/n78/n258/n41 bands
 
-### 📊 MITRE Classification
+### MITRE Classification
 - **ATT&CK Framework** — T1110 (Brute Force), T1046 (Discovery), T1071 (C2), T1498 (DoS)
 - **FiGHT Framework** — FGT1583 (Rogue BS), FGT1599 (Handover Hijack), FGT1498 (Signaling DoS), FGT1562 (Slice Bypass), FGT1040 (IMSI Intercept)
 - **Mitigations** — 3GPP TS 33.501, O-RAN WG11, NIST SP 800-187 mapped
 
-### 🖥️ SOC Dashboard
+### SOC Dashboard
 - **12-column responsive grid** with glassmorphism design
 - **Animated stat counters** with delta trend indicators
 - **Severity donut chart** (pure SVG, no chart library)
@@ -217,7 +217,7 @@ flowchart TD
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Layer | Technology | Purpose |
 |-------|-----------|---------|
@@ -236,7 +236,7 @@ flowchart TD
 
 ---
 
-## 💻 Quick Start
+## Quick Start
 
 ### Prerequisites
 - Docker & Docker Compose
@@ -287,7 +287,7 @@ cd frontend/dashboard && npm install && npm run dev
 
 ---
 
-## 📂 Repository Structure
+## Repository Structure
 
 ```
 sentinelmesh/
@@ -314,7 +314,7 @@ sentinelmesh/
 
 ---
 
-## 🔌 API Endpoints
+## API Endpoints
 
 ### Authentication
 | Method | Endpoint | Description |
@@ -352,7 +352,7 @@ sentinelmesh/
 
 ---
 
-## 📡 O-RAN Domain Details
+## O-RAN Domain Details
 
 ### Simulated RAN Infrastructure
 | Cell ID | Type | Band | Location |
@@ -393,7 +393,7 @@ sentinelmesh/
 
 ---
 
-## 🧪 Development
+## Development
 
 ### Run Tests
 ```bash
@@ -417,7 +417,7 @@ FRONTEND_URL=http://localhost:5173
 
 ---
 
-## 📄 License
+## License
 
 MIT License — see [LICENSE](LICENSE) for details.
 
