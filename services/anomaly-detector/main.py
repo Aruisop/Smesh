@@ -66,15 +66,26 @@ def main():
     print(f"[AnomalyDetector] Model loaded with {len(feature_cols)} features.")
 
     print(f"[AnomalyDetector] Connecting to Redis at {REDIS_HOST}:{REDIS_PORT}")
-    r = redis.Redis(host=REDIS_HOST, port=REDIS_PORT, decode_responses=True)
+    
+    # --- UPDATED CONNECTION BLOCK ---
+    REDIS_PASSWORD = os.getenv("REDIS_PASSWORD")
+    
+    r = redis.Redis(
+        host=REDIS_HOST, 
+        port=REDIS_PORT, 
+        username='default',      # Railway requirement
+        password=REDIS_PASSWORD,  # The secret key
+        decode_responses=True
+    )
 
     # Wait for Redis
     while True:
         try:
             r.ping()
+            print("[AnomalyDetector] Successfully Connected to Redis!") # Added for clarity
             break
-        except redis.ConnectionError:
-            print("[AnomalyDetector] Waiting for Redis...")
+        except redis.ConnectionError as e:
+            print(f"[AnomalyDetector] Waiting for Redis... ({e})")
             time.sleep(2)
 
     # Create consumer group
