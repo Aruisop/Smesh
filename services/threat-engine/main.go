@@ -203,20 +203,27 @@ func calculateThreatScore(result AnomalyResult) float64 {
 }
 
 func main() {
+	// 1. Fetch variables from Railway
 	redisHost := getEnv("REDIS_HOST", "localhost")
 	redisPort := getEnv("REDIS_PORT", "6379")
+	redisPass := getEnv("REDIS_PASSWORD", "")
 	redisAddr := fmt.Sprintf("%s:%s", redisHost, redisPort)
 
+	// 2. Debug Log (Crucial to see if variables are reaching the code)
 	log.Printf("[ThreatEngine v3.0] Connecting to Redis at %s", redisAddr)
+	log.Printf("[DEBUG] Auth check - Password Length: %d", len(redisPass))
 
+	// 3. Initialize Client with proper credentials
 	rdb := redis.NewClient(&redis.Options{
 		Addr:         redisAddr,
+		Username:     "default", // Railway Redis usually requires the 'default' username
+		Password:     redisPass,
 		DB:           0,
 		ReadTimeout:  5 * time.Second,
 		WriteTimeout: 5 * time.Second,
 	})
 
-	// Wait for Redis
+	// 4. Connection Loop
 	for {
 		if err := rdb.Ping(ctx).Err(); err != nil {
 			log.Printf("[ThreatEngine] Waiting for Redis... (%v)", err)
@@ -225,9 +232,8 @@ func main() {
 		}
 		break
 	}
-	log.Println("[ThreatEngine] Connected to Redis.")
+	log.Println("[ThreatEngine] Successfully Connected to Redis.")
 
-	// Create consumer group
 	err := rdb.XGroupCreateMkStream(ctx, inputStream, consumerGroup, "0").Err()
 	if err != nil && !strings.Contains(err.Error(), "BUSYGROUP") {
 		log.Printf("[ThreatEngine] Warning creating consumer group: %v", err)
@@ -333,15 +339,15 @@ func main() {
 
 				// Store recent traffic for timeline
 				trafficEntry, _ := json.Marshal(map[string]interface{}{
-					"timestamp":    result.Timestamp,
-					"src_ip":       result.SrcIP,
-					"packet_size":  result.PacketSize,
-					"protocol":     result.Protocol,
-					"event_type":   result.EventType,
+					"timestamp":     result.Timestamp,
+					"src_ip":        result.SrcIP,
+					"packet_size":   result.PacketSize,
+					"protocol":      result.Protocol,
+					"event_type":    result.EventType,
 					"anomaly_score": result.AnomalyScore,
 					"threat_score":  threatScore,
-					"severity":     severity,
-					"domain":       domain,
+					"severity":      severity,
+					"domain":        domain,
 				})
 				rdb.LPush(ctx, trafficListKey, string(trafficEntry))
 				rdb.LTrim(ctx, trafficListKey, 0, 999)

@@ -1,0 +1,299 @@
+???2026-03-15T06:26:03.7539291Z Current runner version: '2.332.0'
+2026-03-15T06:26:03.7577121Z ##[group]Runner Image Provisioner
+2026-03-15T06:26:03.7578432Z Hosted Compute Agent
+2026-03-15T06:26:03.7579321Z Version: 20260213.493
+2026-03-15T06:26:03.7580366Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
+2026-03-15T06:26:03.7581513Z Build Date: 2026-02-13T00:28:41Z
+2026-03-15T06:26:03.7582885Z Worker ID: {0c520a3b-3d46-4db8-a2d7-fec6349438eb}
+2026-03-15T06:26:03.7584158Z Azure Region: eastus2
+2026-03-15T06:26:03.7584992Z ##[endgroup]
+2026-03-15T06:26:03.7587256Z ##[group]Operating System
+2026-03-15T06:26:03.7588308Z Ubuntu
+2026-03-15T06:26:03.7589018Z 24.04.3
+2026-03-15T06:26:03.7589781Z LTS
+2026-03-15T06:26:03.7590574Z ##[endgroup]
+2026-03-15T06:26:03.7591354Z ##[group]Runner Image
+2026-03-15T06:26:03.7592602Z Image: ubuntu-24.04
+2026-03-15T06:26:03.7593637Z Version: 20260309.50.1
+2026-03-15T06:26:03.7595624Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260309.50/images/ubuntu/Ubuntu2404-Readme.md
+2026-03-15T06:26:03.7598269Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260309.50
+2026-03-15T06:26:03.7599861Z ##[endgroup]
+2026-03-15T06:26:03.7601859Z ##[group]GITHUB_TOKEN Permissions
+2026-03-15T06:26:03.7605368Z Contents: read
+2026-03-15T06:26:03.7606253Z Metadata: read
+2026-03-15T06:26:03.7607123Z Packages: write
+2026-03-15T06:26:03.7607946Z ##[endgroup]
+2026-03-15T06:26:03.7610960Z Secret source: Actions
+2026-03-15T06:26:03.7612952Z Prepare workflow directory
+2026-03-15T06:26:03.8375483Z Prepare all required actions
+2026-03-15T06:26:03.8431831Z Getting action download info
+2026-03-15T06:26:04.1089391Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+2026-03-15T06:26:04.2714799Z Download action repository 'docker/login-action@v3' (SHA:c94ce9fb468520275223c153574b00df6fe4bcc9)
+2026-03-15T06:26:04.6130986Z Download action repository 'docker/build-push-action@v5' (SHA:ca052bb54ab0790a636c9b5f226502c73d547a25)
+2026-03-15T06:26:05.0333908Z Complete job name: Build Frontend Dashboard
+2026-03-15T06:26:05.0999225Z ##[group]Run actions/checkout@v4
+2026-03-15T06:26:05.1000093Z with:
+2026-03-15T06:26:05.1000474Z   repository: Aruisop/Smesh
+2026-03-15T06:26:05.1001138Z   token: ***
+2026-03-15T06:26:05.1001501Z   ssh-strict: true
+2026-03-15T06:26:05.1002058Z   ssh-user: git
+2026-03-15T06:26:05.1002467Z   persist-credentials: true
+2026-03-15T06:26:05.1002892Z   clean: true
+2026-03-15T06:26:05.1003281Z   sparse-checkout-cone-mode: true
+2026-03-15T06:26:05.1003740Z   fetch-depth: 1
+2026-03-15T06:26:05.1004115Z   fetch-tags: false
+2026-03-15T06:26:05.1004493Z   show-progress: true
+2026-03-15T06:26:05.1004899Z   lfs: false
+2026-03-15T06:26:05.1005268Z   submodules: false
+2026-03-15T06:26:05.1005667Z   set-safe-directory: true
+2026-03-15T06:26:05.1006348Z env:
+2026-03-15T06:26:05.1006703Z   REGISTRY: ghcr.io
+2026-03-15T06:26:05.1007106Z   IMAGE_NAME: Aruisop/Smesh
+2026-03-15T06:26:05.1007529Z ##[endgroup]
+2026-03-15T06:26:05.2220176Z Syncing repository: Aruisop/Smesh
+2026-03-15T06:26:05.2225391Z ##[group]Getting Git version info
+2026-03-15T06:26:05.2226710Z Working directory is '/home/runner/work/Smesh/Smesh'
+2026-03-15T06:26:05.2228387Z [command]/usr/bin/git version
+2026-03-15T06:26:05.2307120Z git version 2.53.0
+2026-03-15T06:26:05.2348437Z ##[endgroup]
+2026-03-15T06:26:05.2358155Z Temporarily overriding HOME='/home/runner/work/_temp/323e26c7-4e57-4b85-a810-ea0431f1c429' before making global git config changes
+2026-03-15T06:26:05.2360564Z Adding repository directory to the temporary git global config as a safe directory
+2026-03-15T06:26:05.2381461Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Smesh/Smesh
+2026-03-15T06:26:05.2434021Z Deleting the contents of '/home/runner/work/Smesh/Smesh'
+2026-03-15T06:26:05.2437374Z ##[group]Initializing the repository
+2026-03-15T06:26:05.2440220Z [command]/usr/bin/git init /home/runner/work/Smesh/Smesh
+2026-03-15T06:26:05.2621676Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-03-15T06:26:05.2624319Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-03-15T06:26:05.2625910Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-03-15T06:26:05.2627470Z hint: call:
+2026-03-15T06:26:05.2628195Z hint:
+2026-03-15T06:26:05.2629197Z hint: 	git config --global init.defaultBranch <name>
+2026-03-15T06:26:05.2630496Z hint:
+2026-03-15T06:26:05.2631688Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-03-15T06:26:05.2633630Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-03-15T06:26:05.2635043Z hint:
+2026-03-15T06:26:05.2635869Z hint: 	git branch -m <name>
+2026-03-15T06:26:05.2636643Z hint:
+2026-03-15T06:26:05.2637880Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-03-15T06:26:05.2639539Z Initialized empty Git repository in /home/runner/work/Smesh/Smesh/.git/
+2026-03-15T06:26:05.2642947Z [command]/usr/bin/git remote add origin https://github.com/Aruisop/Smesh
+2026-03-15T06:26:05.2669679Z ##[endgroup]
+2026-03-15T06:26:05.2674012Z ##[group]Disabling automatic garbage collection
+2026-03-15T06:26:05.2677610Z [command]/usr/bin/git config --local gc.auto 0
+2026-03-15T06:26:05.2713508Z ##[endgroup]
+2026-03-15T06:26:05.2714992Z ##[group]Setting up auth
+2026-03-15T06:26:05.2720977Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-03-15T06:26:05.2771657Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-03-15T06:26:05.3180006Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-03-15T06:26:05.3219211Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-03-15T06:26:05.3498832Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-03-15T06:26:05.3537265Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-03-15T06:26:05.3826359Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-03-15T06:26:05.3872181Z ##[endgroup]
+2026-03-15T06:26:05.3876147Z ##[group]Fetching the repository
+2026-03-15T06:26:05.3884200Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +4e6928f2ac5d7722146ea562b8f12e3265340349:refs/remotes/origin/main
+2026-03-15T06:26:05.6009085Z From https://github.com/Aruisop/Smesh
+2026-03-15T06:26:05.6011530Z  * [new ref]         4e6928f2ac5d7722146ea562b8f12e3265340349 -> origin/main
+2026-03-15T06:26:05.6032240Z ##[endgroup]
+2026-03-15T06:26:05.6034308Z ##[group]Determining the checkout info
+2026-03-15T06:26:05.6039100Z ##[endgroup]
+2026-03-15T06:26:05.6041530Z [command]/usr/bin/git sparse-checkout disable
+2026-03-15T06:26:05.6091236Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-03-15T06:26:05.6127808Z ##[group]Checking out the ref
+2026-03-15T06:26:05.6130009Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-03-15T06:26:05.6249075Z Switched to a new branch 'main'
+2026-03-15T06:26:05.6254652Z branch 'main' set up to track 'origin/main'.
+2026-03-15T06:26:05.6264982Z ##[endgroup]
+2026-03-15T06:26:05.6309905Z [command]/usr/bin/git log -1 --format=%H
+2026-03-15T06:26:05.6336635Z 4e6928f2ac5d7722146ea562b8f12e3265340349
+2026-03-15T06:26:05.6653989Z ##[group]Run docker/login-action@v3
+2026-03-15T06:26:05.6655396Z with:
+2026-03-15T06:26:05.6656245Z   registry: ghcr.io
+2026-03-15T06:26:05.6657218Z   username: Aruisop
+2026-03-15T06:26:05.6658728Z   password: ***
+2026-03-15T06:26:05.6659704Z   logout: true
+2026-03-15T06:26:05.6660584Z env:
+2026-03-15T06:26:05.6661780Z   REGISTRY: ghcr.io
+2026-03-15T06:26:05.6662973Z   IMAGE_NAME: Aruisop/Smesh
+2026-03-15T06:26:05.6664048Z ##[endgroup]
+2026-03-15T06:26:06.1159463Z Logging into ghcr.io...
+2026-03-15T06:26:06.4795697Z Login Succeeded!
+2026-03-15T06:26:06.5188161Z ##[group]Run docker/build-push-action@v5
+2026-03-15T06:26:06.5189222Z with:
+2026-03-15T06:26:06.5189924Z   context: ./frontend/dashboard
+2026-03-15T06:26:06.5190808Z   push: true
+2026-03-15T06:26:06.5191634Z   tags: ghcr.io/Aruisop/Smesh/dashboard:latest
+2026-03-15T06:26:06.5192929Z   cache-from: type=gha
+2026-03-15T06:26:06.5193766Z   cache-to: type=gha,mode=max
+2026-03-15T06:26:06.5194658Z   load: false
+2026-03-15T06:26:06.5195349Z   no-cache: false
+2026-03-15T06:26:06.5196066Z   pull: false
+2026-03-15T06:26:06.5197154Z   github-token: ***
+2026-03-15T06:26:06.5197888Z env:
+2026-03-15T06:26:06.5198547Z   REGISTRY: ghcr.io
+2026-03-15T06:26:06.5199329Z   IMAGE_NAME: Aruisop/Smesh
+2026-03-15T06:26:06.5200160Z ##[endgroup]
+2026-03-15T06:26:06.7975715Z ##[group]GitHub Actions runtime token ACs
+2026-03-15T06:26:06.7999326Z refs/heads/main: read/write
+2026-03-15T06:26:06.8007943Z ##[endgroup]
+2026-03-15T06:26:06.8024169Z ##[group]Docker info
+2026-03-15T06:26:06.8086103Z [command]/usr/bin/docker version
+2026-03-15T06:26:06.8472710Z Client: Docker Engine - Community
+2026-03-15T06:26:06.8493343Z  Version:           28.0.4
+2026-03-15T06:26:06.8495384Z  API version:       1.48
+2026-03-15T06:26:06.8497527Z  Go version:        go1.23.7
+2026-03-15T06:26:06.8505564Z  Git commit:        b8034c0
+2026-03-15T06:26:06.8508097Z  Built:             Tue Mar 25 15:07:16 2025
+2026-03-15T06:26:06.8514247Z  OS/Arch:           linux/amd64
+2026-03-15T06:26:06.8515813Z  Context:           default
+2026-03-15T06:26:06.8516779Z 
+2026-03-15T06:26:06.8517384Z Server: Docker Engine - Community
+2026-03-15T06:26:06.8518933Z  Engine:
+2026-03-15T06:26:06.8520122Z   Version:          28.0.4
+2026-03-15T06:26:06.8521767Z   API version:      1.48 (minimum version 1.24)
+2026-03-15T06:26:06.8544196Z   Go version:       go1.23.7
+2026-03-15T06:26:06.8545779Z   Git commit:       6430e49
+2026-03-15T06:26:06.8547348Z   Built:            Tue Mar 25 15:07:16 2025
+2026-03-15T06:26:06.8549134Z   OS/Arch:          linux/amd64
+2026-03-15T06:26:06.8550720Z   Experimental:     false
+2026-03-15T06:26:06.8552391Z  containerd:
+2026-03-15T06:26:06.8553669Z   Version:          v2.2.1
+2026-03-15T06:26:06.8555531Z   GitCommit:        dea7da592f5d1d2b7755e3a161be07f43fad8f75
+2026-03-15T06:26:06.8557604Z  runc:
+2026-03-15T06:26:06.8558789Z   Version:          1.3.4
+2026-03-15T06:26:06.8560293Z   GitCommit:        v1.3.4-0-gd6d73eb8
+2026-03-15T06:26:06.8582408Z  docker-init:
+2026-03-15T06:26:06.8583766Z   Version:          0.19.0
+2026-03-15T06:26:06.8585268Z   GitCommit:        de40ad0
+2026-03-15T06:26:06.8634127Z [command]/usr/bin/docker info
+2026-03-15T06:26:09.5757779Z Client: Docker Engine - Community
+2026-03-15T06:26:09.5758378Z  Version:    28.0.4
+2026-03-15T06:26:09.5758711Z  Context:    default
+2026-03-15T06:26:09.5759059Z  Debug Mode: false
+2026-03-15T06:26:09.5759437Z  Plugins:
+2026-03-15T06:26:09.5759749Z   buildx: Docker Buildx (Docker Inc.)
+2026-03-15T06:26:09.5760157Z     Version:  v0.32.1
+2026-03-15T06:26:09.5760585Z     Path:     /usr/libexec/docker/cli-plugins/docker-buildx
+2026-03-15T06:26:09.5761088Z   compose: Docker Compose (Docker Inc.)
+2026-03-15T06:26:09.5761497Z     Version:  v2.38.2
+2026-03-15T06:26:09.5762118Z     Path:     /usr/libexec/docker/cli-plugins/docker-compose
+2026-03-15T06:26:09.5762504Z 
+2026-03-15T06:26:09.5762611Z Server:
+2026-03-15T06:26:09.5762909Z  Containers: 0
+2026-03-15T06:26:09.5763218Z   Running: 0
+2026-03-15T06:26:09.5763555Z   Paused: 0
+2026-03-15T06:26:09.5763823Z   Stopped: 0
+2026-03-15T06:26:09.5764095Z  Images: 6
+2026-03-15T06:26:09.5764362Z  Server Version: 28.0.4
+2026-03-15T06:26:09.5764699Z  Storage Driver: overlay2
+2026-03-15T06:26:09.5765046Z   Backing Filesystem: extfs
+2026-03-15T06:26:09.5765413Z   Supports d_type: true
+2026-03-15T06:26:09.5765739Z   Using metacopy: false
+2026-03-15T06:26:09.5772600Z   Native Overlay Diff: false
+2026-03-15T06:26:09.5773481Z   userxattr: false
+2026-03-15T06:26:09.5796550Z  Logging Driver: json-file
+2026-03-15T06:26:09.5797157Z  Cgroup Driver: systemd
+2026-03-15T06:26:09.5797990Z  Cgroup Version: 2
+2026-03-15T06:26:09.5798542Z  Plugins:
+2026-03-15T06:26:09.5798980Z   Volume: local
+2026-03-15T06:26:09.5799519Z   Network: bridge host ipvlan macvlan null overlay
+2026-03-15T06:26:09.5800418Z   Log: awslogs fluentd gcplogs gelf journald json-file local splunk syslog
+2026-03-15T06:26:09.5801195Z  Swarm: inactive
+2026-03-15T06:26:09.5801671Z  Runtimes: io.containerd.runc.v2 runc
+2026-03-15T06:26:09.5808335Z  Default Runtime: runc
+2026-03-15T06:26:09.5808882Z  Init Binary: docker-init
+2026-03-15T06:26:09.5809544Z  containerd version: dea7da592f5d1d2b7755e3a161be07f43fad8f75
+2026-03-15T06:26:09.5810317Z  runc version: v1.3.4-0-gd6d73eb8
+2026-03-15T06:26:09.5810923Z  init version: de40ad0
+2026-03-15T06:26:09.5811468Z  Security Options:
+2026-03-15T06:26:09.5818384Z   apparmor
+2026-03-15T06:26:09.5818993Z   seccomp
+2026-03-15T06:26:09.5819486Z    Profile: builtin
+2026-03-15T06:26:09.5819952Z   cgroupns
+2026-03-15T06:26:09.5820319Z  Kernel Version: 6.14.0-1017-azure
+2026-03-15T06:26:09.5820926Z  Operating System: Ubuntu 24.04.3 LTS
+2026-03-15T06:26:09.5821351Z  OSType: linux
+2026-03-15T06:26:09.5821832Z  Architecture: x86_64
+2026-03-15T06:26:09.5822522Z  CPUs: 2
+2026-03-15T06:26:09.5822999Z  Total Memory: 7.753GiB
+2026-03-15T06:26:09.5823350Z  Name: runnervm46oaq
+2026-03-15T06:26:09.5823714Z  ID: d09189cb-1d3f-4984-a57a-14f8dab86177
+2026-03-15T06:26:09.5824176Z  Docker Root Dir: /var/lib/docker
+2026-03-15T06:26:09.5824584Z  Debug Mode: false
+2026-03-15T06:26:09.5824913Z  Username: githubactions
+2026-03-15T06:26:09.5825280Z  Experimental: false
+2026-03-15T06:26:09.5825632Z  Insecure Registries:
+2026-03-15T06:26:09.5830443Z   ::1/128
+2026-03-15T06:26:09.5830756Z   127.0.0.0/8
+2026-03-15T06:26:09.5831348Z  Live Restore Enabled: false
+2026-03-15T06:26:09.5849752Z 
+2026-03-15T06:26:09.5850764Z ##[endgroup]
+2026-03-15T06:26:09.5851467Z ##[group]Proxy configuration
+2026-03-15T06:26:09.5852251Z No proxy configuration found
+2026-03-15T06:26:09.5853009Z ##[endgroup]
+2026-03-15T06:26:09.7061680Z ##[group]Buildx version
+2026-03-15T06:26:09.7122972Z [command]/usr/bin/docker buildx version
+2026-03-15T06:26:09.8038004Z github.com/docker/buildx v0.32.1 d3bfb3f4e48a67dda56e957a6636f4fab6c5fcb2
+2026-03-15T06:26:09.8089107Z ##[endgroup]
+2026-03-15T06:26:09.8097964Z ##[group]Builder info
+2026-03-15T06:26:09.9974666Z {
+2026-03-15T06:26:09.9980505Z   "nodes": [
+2026-03-15T06:26:09.9984820Z     {
+2026-03-15T06:26:09.9988246Z       "name": "default",
+2026-03-15T06:26:09.9990804Z       "endpoint": "default",
+2026-03-15T06:26:09.9995112Z       "status": "running",
+2026-03-15T06:26:09.9995675Z       "buildkit": "v0.20.2",
+2026-03-15T06:26:09.9998235Z       "platforms": "linux/amd64,linux/amd64/v2,linux/amd64/v3,linux/386",
+2026-03-15T06:26:09.9999555Z       "features": {
+2026-03-15T06:26:10.0000374Z         "Automatically load images to the Docker Engine image store": true,
+2026-03-15T06:26:10.0001088Z         "Cache export": true,
+2026-03-15T06:26:10.0001676Z         "Direct push": true,
+2026-03-15T06:26:10.0002470Z         "Docker exporter": true,
+2026-03-15T06:26:10.0003107Z         "Multi-platform build": true,
+2026-03-15T06:26:10.0003855Z         "OCI exporter": true
+2026-03-15T06:26:10.0004325Z       },
+2026-03-15T06:26:10.0004754Z       "labels": {
+2026-03-15T06:26:10.0005369Z         "org.mobyproject.buildkit.worker.moby.host-gateway-ip": "172.17.0.1"
+2026-03-15T06:26:10.0006333Z       }
+2026-03-15T06:26:10.0006710Z     }
+2026-03-15T06:26:10.0007121Z   ],
+2026-03-15T06:26:10.0007691Z   "name": "default",
+2026-03-15T06:26:10.0008214Z   "driver": "docker"
+2026-03-15T06:26:10.0008661Z }
+2026-03-15T06:26:10.0010348Z ##[endgroup]
+2026-03-15T06:26:10.1784836Z [command]/usr/bin/docker buildx build --cache-from type=gha --cache-to type=gha,mode=max --iidfile /home/runner/work/_temp/docker-actions-toolkit-hcSObC/build-iidfile-21bd8d9f56.txt --tag ghcr.io/Aruisop/Smesh/dashboard:latest --metadata-file /home/runner/work/_temp/docker-actions-toolkit-hcSObC/build-metadata-129db4c1a5.json --push ./frontend/dashboard
+2026-03-15T06:26:10.3278515Z ERROR: failed to build: Cache export is not supported for the docker driver.
+2026-03-15T06:26:10.3281027Z Switch to a different driver, or turn on the containerd image store, and try again.
+2026-03-15T06:26:10.3294398Z Learn more at https://docs.docker.com/go/build-cache-backends/
+2026-03-15T06:26:10.3357520Z ##[error]buildx failed with: Learn more at https://docs.docker.com/go/build-cache-backends/
+2026-03-15T06:26:10.3537305Z Post job cleanup.
+2026-03-15T06:26:10.6115855Z ##[group]Removing temp folder /home/runner/work/_temp/docker-actions-toolkit-hcSObC
+2026-03-15T06:26:10.6126388Z ##[endgroup]
+2026-03-15T06:26:10.6127478Z ##[group]Post cache
+2026-03-15T06:26:10.6129308Z State not set
+2026-03-15T06:26:10.6130100Z ##[endgroup]
+2026-03-15T06:26:10.6299829Z Post job cleanup.
+2026-03-15T06:26:11.2354820Z ##[group]Logout from ghcr.io
+2026-03-15T06:26:11.2437940Z [command]/usr/bin/docker logout ghcr.io
+2026-03-15T06:26:11.2658972Z Removing login credentials for ghcr.io
+2026-03-15T06:26:11.2711062Z ##[endgroup]
+2026-03-15T06:26:11.2715342Z ##[group]Post cache
+2026-03-15T06:26:11.2720156Z State not set
+2026-03-15T06:26:11.2724208Z ##[endgroup]
+2026-03-15T06:26:11.2938802Z Post job cleanup.
+2026-03-15T06:26:11.4234903Z [command]/usr/bin/git version
+2026-03-15T06:26:11.4402999Z git version 2.53.0
+2026-03-15T06:26:11.4513983Z Temporarily overriding HOME='/home/runner/work/_temp/f4850da6-f82e-4bb4-9f20-229af2f10443' before making global git config changes
+2026-03-15T06:26:11.4534199Z Adding repository directory to the temporary git global config as a safe directory
+2026-03-15T06:26:11.4539989Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Smesh/Smesh
+2026-03-15T06:26:11.4754336Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-03-15T06:26:11.4855778Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-03-15T06:26:11.5407341Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-03-15T06:26:11.5503050Z http.https://github.com/.extraheader
+2026-03-15T06:26:11.5505483Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-03-15T06:26:11.5558128Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-03-15T06:26:11.5858727Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-03-15T06:26:11.5899323Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-03-15T06:26:11.6333433Z Cleaning up orphan processes
+2026-03-15T06:26:11.6827794Z ##[warning]Node.js 20 actions are deprecated. The following actions are running on Node.js 20 and may not work as expected: actions/checkout@v4, docker/build-push-action@v5, docker/login-action@v3. Actions will be forced to run with Node.js 24 by default starting June 2nd, 2026. Please check if updated versions of these actions are available that support Node.js 24. To opt into Node.js 24 now, set the FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true environment variable on the runner or in your workflow file. Once Node.js 24 becomes the default, you can temporarily opt out by setting ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+
