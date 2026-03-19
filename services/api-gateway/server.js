@@ -138,8 +138,12 @@ let redisClient;
 let redisSub; // Subscribe client for Pub/Sub
 
 async function connectRedis() {
-  redisClient = createClient({ url: `redis://${REDIS_HOST}:${REDIS_PORT}` });
-  redisSub = createClient({ url: `redis://${REDIS_HOST}:${REDIS_PORT}` });
+  // 1. Build the Auth URL
+  const redisUrl = `redis://default:${process.env.REDIS_PASSWORD}@${REDIS_HOST}:${REDIS_PORT}`;
+  
+  // 2. Initialize clients with the Auth URL
+  redisClient = createClient({ url: redisUrl });
+  redisSub = createClient({ url: redisUrl });
 
   redisClient.on("error", (err) => logger.error({ err: err.message }, "Redis error"));
   redisClient.on("connect", () => logger.info("Connected to Redis (main)"));
@@ -167,10 +171,10 @@ async function connectRedis() {
       });
 
       logger.info("Redis Pub/Sub subscriptions active");
-      return;
+      return; // Connection successful!
     } catch (err) {
       retries++;
-      logger.warn(`Waiting for Redis... (attempt ${retries})`);
+      logger.warn(`Waiting for Redis... (attempt ${retries}) - ${err.message}`);
       await new Promise((r) => setTimeout(r, 2000));
     }
   }
