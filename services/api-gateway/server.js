@@ -386,7 +386,7 @@ app.get("/api/auth/github/callback", async (req, res) => {
     const token = jwt.sign(jwtPayload, JWT_SECRET, { expiresIn: JWT_EXPIRES_IN });
 
     res.cookie("sentinel_token", token, {
-      httpOnly: false, secure: false, maxAge: 24 * 60 * 60 * 1000, sameSite: "lax", path: "/",
+      httpOnly: false, secure: true, maxAge: 24 * 60 * 60 * 1000, sameSite: "none", path: "/",
     });
 
     logger.info({ user: ghUser.login }, "OAuth authentication successful");
@@ -409,7 +409,7 @@ app.post("/api/auth/demo", (req, res) => {
 
   const token = jwt.sign(jwtPayload, JWT_SECRET, { expiresIn: JWT_EXPIRES_IN });
   res.cookie("sentinel_token", token, {
-    httpOnly: false, secure: false, maxAge: 24 * 60 * 60 * 1000, sameSite: "lax", path: "/",
+    httpOnly: false, secure: true, maxAge: 24 * 60 * 60 * 1000, sameSite: "none", path: "/",
   });
   res.json({ token, user: jwtPayload });
 });
