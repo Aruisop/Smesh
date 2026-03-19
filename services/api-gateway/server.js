@@ -867,7 +867,7 @@ async function start() {
     } catch {}
   }, 2000);
 
-  server.listen(PORT, () => {
+  server.listen(PORT,'0.0.0.0',() => {
     logger.info("═══════════════════════════════════════════════════");
     logger.info(`  SentinelMesh API Gateway v3.0.0 — Port ${PORT}`);
     logger.info(`  WebSocket: ws://localhost:${PORT}`);
