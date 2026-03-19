@@ -307,6 +307,9 @@ func main() {
 						Values: map[string]interface{}{"data": string(alertJSON)},
 					})
 
+					// Publish to Pub/Sub to trigger real-time WebSocket events in Node.js
+					rdb.Publish(ctx, "sentinel:events", string(alertJSON))
+
 					// Store in sorted set for API queries
 					rdb.ZAdd(ctx, alertsSortedSet, redis.Z{
 						Score:  threatScore,
