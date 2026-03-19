@@ -4,8 +4,14 @@ import { io } from 'socket.io-client';
 
 const AuthContext = createContext(null);
 
-const API_URL = import.meta.env.VITE_API_URL || '/api';
-const WS_URL = import.meta.env.VITE_WS_URL || window.location.origin;
+// 1. Check Vite env, 2. Check Next/Vercel env, 3. Fallback to Production Railway
+const API_URL = import.meta.env.VITE_API_URL || 
+                import.meta.env.NEXT_PUBLIC_API_URL || 
+                'https://apigateway-production-10f1.up.railway.app/api';
+
+const WS_URL = import.meta.env.VITE_WS_URL || 
+               import.meta.env.NEXT_PUBLIC_WS_URL || 
+               'https://apigateway-production-10f1.up.railway.app';
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
