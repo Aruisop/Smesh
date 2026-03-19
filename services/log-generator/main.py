@@ -334,11 +334,19 @@ def generate_log():
 
 def main():
     print("[LogGenerator v3.0] Connecting to Redis at {}:{}".format(REDIS_HOST, REDIS_PORT))
-    r = redis.Redis(host=REDIS_HOST, port=REDIS_PORT, decode_responses=True)
-
+    # --- UPDATED AUTHENTICATION BLOCK ---
+    r = redis.Redis(
+        host=REDIS_HOST, 
+        port=REDIS_PORT, 
+        username='default',          # Required by Railway
+        password=os.getenv("REDIS_PASSWORD"), # Required by Railway
+        decode_responses=True
+    )
+    # ------------------------------------
     while True:
         try:
             r.ping()
+            print("[LogGenerator] Successfully Connected to Redis!")
             break
         except redis.ConnectionError:
             print("[LogGenerator] Waiting for Redis...")
