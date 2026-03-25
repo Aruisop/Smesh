@@ -59,7 +59,22 @@ app.use(cookieParser());
 app.use(express.json());
 
 const corsOptions = {
-  origin: [FRONTEND_URL, "http://localhost:5173", "http://localhost:5174", "http://localhost:3000"],
+  origin: function (origin, callback) {
+    const allowedOrigins = [
+      FRONTEND_URL,
+      "http://localhost:5173",
+      "http://localhost:5174",
+      "http://localhost:3000",
+    ];
+    // Allow requests with no origin (mobile apps, curl, server-to-server)
+    // Allow any *.vercel.app subdomain for Vercel preview deployments
+    if (!origin || allowedOrigins.includes(origin) || /\.vercel\.app$/.test(origin)) {
+      callback(null, true);
+    } else {
+      logger.warn({ origin }, "CORS blocked request from origin");
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   credentials: true,
 };
 app.use(cors(corsOptions));
