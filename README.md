@@ -428,8 +428,4 @@ MIT License — see [LICENSE](LICENSE) for details.
 
 <div align="center">
 
-**Built with ❤️ for enterprise security operations**
-
-*SentinelMesh demonstrates proficiency in microservice architecture, real-time data streaming, ML-based threat detection, O-RAN security assurance, and production-grade DevOps practices.*
-
 </div>
