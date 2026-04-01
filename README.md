@@ -15,6 +15,9 @@
 
 </div>
 
+## Railway microservices setup
+<img width="1917" height="792" alt="Image" src="https://github.com/user-attachments/assets/c93cbf4e-6d67-4159-babc-bad9273f5655" />
+
 ---
 
 ## Platform Interface
